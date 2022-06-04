@@ -2,7 +2,13 @@ from game.card import Card
 
 
 class Director:
+    """A person who directs the game. 
+    """
+
     def __init__(self):
+          """
+       new Director.
+        """
         self.playagain = True
         self.totalscore = 300
         self.card1 = 0       
@@ -10,12 +16,18 @@ class Director:
         self.hilo = ""
 
     def start(self):
+          """
+        Starts the game by running the main game loop.
+        """
         while self.playagain:
             self.userinput()
             self.gameout()
             self.keepplaying()
 
     def userinput(self):
+         """
+        Gets the input of the user for higher or lower.
+        """
         if not self.playagain:
             return
         self.card1 = Card.firstcardflip()
@@ -28,6 +40,9 @@ class Director:
             self.userinput()
             return
     def gameout(self):
+          """
+        Flips a second card and updates the player's score accordingly.
+        """
         if not self.playagain:
             return
         score = Card.secondcardflip(self.card1,self.hilo)
@@ -35,6 +50,9 @@ class Director:
         print(f'the score is {self.totalscore}')
         return
     def keepplaying(self):
+         """
+        Asks the player if they want to continue. 
+        """
         if not self.playagain:
             return
         if self.totalscore <= 0:
